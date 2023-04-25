@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ItemForm({ onAddItem }) {
+function ItemForm({onAddItem}) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Produce");
 
@@ -10,18 +10,19 @@ function ItemForm({ onAddItem }) {
       name: name,
       category: category,
       isInCart: false,
-  };
-  fetch("http://localhost:4000/items", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(itemData),
-  })
-    .then((r) => r.json())
-    .then((newItem) => onAddItem(newItem));
-}
- 
+    };
+    fetch("http://localhost:4000/items",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(itemData),
+    })
+    .then((r) =>r.json())
+    .then((newItem)=> onAddItem(newItem));
+    }
+  
+
   return (
     <form className="NewItem" onSubmit={handleSubmit}>
       <label>
@@ -50,6 +51,6 @@ function ItemForm({ onAddItem }) {
       <button type="submit">Add to List</button>
     </form>
   );
-}
 
+  }
 export default ItemForm;
